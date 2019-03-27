@@ -72,6 +72,8 @@ LOCAL_SRC_FILES += android/ijksdl_vout_android_nativewindow.c
 LOCAL_SRC_FILES += android/ijksdl_vout_android_surface.c
 LOCAL_SRC_FILES += android/ijksdl_vout_overlay_android_mediacodec.c
 
+LOCAL_SRC_FILES += gles2/test_opengl.c
+
 LOCAL_SHARED_LIBRARIES := ijkffmpeg
 LOCAL_STATIC_LIBRARIES := cpufeatures yuv_static ijkj4a
 

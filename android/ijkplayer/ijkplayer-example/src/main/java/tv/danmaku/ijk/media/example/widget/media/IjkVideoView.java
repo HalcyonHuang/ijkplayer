@@ -333,6 +333,9 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
             mMediaPlayer.setOnTimedTextListener(mOnTimedTextListener);
             mCurrentBufferPercentage = 0;
             String scheme = mUri.getScheme();
+
+            // mUri= Uri.parse("http://demo.pull.ucloud.com.cn/live/12348.flv");
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
                     mSettings.getUsingMediaDataSource() &&
                     (TextUtils.isEmpty(scheme) || scheme.equalsIgnoreCase("file"))) {
@@ -1059,12 +1062,15 @@ public class IjkVideoView extends FrameLayout implements MediaController.MediaPl
                         ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "opensles", 0);
                     }
 
-                    String pixelFormat = mSettings.getPixelFormat();
+                   String pixelFormat = mSettings.getPixelFormat();
                     if (TextUtils.isEmpty(pixelFormat)) {
                         ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "overlay-format", IjkMediaPlayer.SDL_FCC_RV32);
                     } else {
                         ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "overlay-format", pixelFormat);
                     }
+
+                  //  ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "overlay-format", "fcc-_es2");
+
                     ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "framedrop", 1);
                     ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "start-on-prepared", 0);
 

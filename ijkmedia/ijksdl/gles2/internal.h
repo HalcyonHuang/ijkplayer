@@ -75,6 +75,34 @@ typedef struct IJK_GLES2_Renderer
     int     frame_sar_den;
 
     GLsizei last_buffer_width;
+
+  ////////////
+
+    int has_filter;
+    void (* func_onCreated)(void);
+    void (* func_onSizeChanged)(int width,int height);
+    void (* func_onDrawFrame)(int textureId);
+    void (* func_onTexcoords)(float *texcoords);
+    void (* func_onVertices)(float *vertices);
+
+
+    int view_width;
+    int view_height;
+
+    GLuint frame_buffers[1];
+    GLuint frame_textures[1];
+
+    GLuint program_test;
+    GLuint vertex_shader_test;
+    GLuint fragment_shader_test;
+    GLuint position_test;
+    GLuint texcoord_test;
+    GLuint sampler_test;
+    GLfloat texcoords_test[8];
+
+    GLfloat vertices_test[8];
+
+  //////////
 } IJK_GLES2_Renderer;
 
 typedef struct IJK_GLES_Matrix
@@ -100,5 +128,9 @@ IJK_GLES2_Renderer *IJK_GLES2_Renderer_create_yuv420sp_vtb(SDL_VoutOverlay *over
 IJK_GLES2_Renderer *IJK_GLES2_Renderer_create_rgb565();
 IJK_GLES2_Renderer *IJK_GLES2_Renderer_create_rgb888();
 IJK_GLES2_Renderer *IJK_GLES2_Renderer_create_rgbx8888();
+
+
+const char *IJK_GLES2_getFragmentShader_test();
+const char *IJK_GLES2_getVertexShader_test();
 
 #endif

@@ -297,6 +297,9 @@ static EGLBoolean IJK_EGL_prepareRenderer(IJK_EGL* egl, SDL_VoutOverlay *overlay
     }
 
     glViewport(0, 0, egl->width, egl->height);  IJK_GLES2_checkError_TRACE("glViewport");
+
+     IJK_GLES2_Renderer_set_view_size(opaque->renderer,egl->width, egl->height);  /////
+
     return EGL_TRUE;
 }
 

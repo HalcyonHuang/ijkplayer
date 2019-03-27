@@ -28,7 +28,7 @@ static GLboolean yuv420p_use(IJK_GLES2_Renderer *renderer)
 
     glUseProgram(renderer->program);            IJK_GLES2_checkError_TRACE("glUseProgram");
 
-    if (0 == renderer->plane_textures[0])
+     if (0 == renderer->plane_textures[0])
         glGenTextures(3, renderer->plane_textures);
 
     for (int i = 0; i < 3; ++i) {
@@ -41,7 +41,27 @@ static GLboolean yuv420p_use(IJK_GLES2_Renderer *renderer)
         glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
         glUniform1i(renderer->us2_sampler[i], i);
+    } 
+    
+    ///////////////////
+  /*  if (0 == renderer->plane_textures[0]){
+      glGenTextures(3, renderer->plane_textures);
+      for (int i = 0; i < 3; ++i) {
+        glBindTexture(GL_TEXTURE_2D, renderer->plane_textures[i]);
+
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+      }
     }
+
+    for (int i = 0; i < 3; ++i) {
+     glActiveTexture(GL_TEXTURE0 + i);
+     glBindTexture(GL_TEXTURE_2D, renderer->plane_textures[i]);
+     glUniform1i(renderer->us2_sampler[i], i);
+    }8**/
+/////////////////////
 
     glUniformMatrix3fv(renderer->um3_color_conversion, 1, GL_FALSE, IJK_GLES2_getColorMatrix_bt709());
 
